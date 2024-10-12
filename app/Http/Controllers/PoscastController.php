@@ -32,7 +32,7 @@ class PoscastController extends Controller
 
         foreach ($data_list as $key =>  $data) {
             \Log::error('======= ' . $key . ' proceso ==========' );
-            ProcessPodcast::dispatch($data);
+            ProcessPodcast::dispatch($data, $key);
         }
     }
 

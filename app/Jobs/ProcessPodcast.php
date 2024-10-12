@@ -28,7 +28,8 @@ class ProcessPodcast implements ShouldQueue
     public function handle(): void
     {
         foreach ($this->datos as $key => $value) {
-            \Log::info($key);
+        
+            \Log::info( $this->id . "=>" . $key);
             Sleep::for(1)->second();
         }
     }
