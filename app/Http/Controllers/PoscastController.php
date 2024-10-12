@@ -18,23 +18,23 @@ class PoscastController extends Controller
         \Log::info("start");
         $faker = Container::getInstance()->make(Generator::class);
 
-        $poscast = [];
+        $poscasts = [];
         for ($i=0; $i < 100; $i++) { 
-            $poscast[] = [
+            $poscasts[] = [
                 'name' => $faker->word(),
                 'duration' => 2.54,
                 'description' => $faker->sentence()
             ];
         }
 
-        $data_list = array_chunk($poscast, 2, true);
+        $data_list = array_slice($poscasts, count($poscasts)/5);
 
-        return ($data_list[0]);
+        // return ($data_list[0]);
         
-        // foreach ($data_list as $key =>  $data) {
-        //     \Log::error($key . 'proceso ==========' );
-        //     ProcessPodcast::dispatch($data);
-        // }
+        foreach ($data_list as $key =>  $data) {
+            \Log::error($key . 'proceso ==========' );
+            ProcessPodcast::dispatch($data);
+        }
     }
 
     /**
