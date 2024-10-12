@@ -14,10 +14,12 @@ class ProcessPodcast implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public array $datos;
+    public int $id;
     
-    public function __construct(array $datos)
+    public function __construct(array $datos, int $id)
     {
         $this->datos = $datos;
+        $this->id = $id;
     }
 
     /**

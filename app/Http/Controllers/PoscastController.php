@@ -27,12 +27,11 @@ class PoscastController extends Controller
             ];
         }
 
-        $data_list = array_slice($poscasts, count($poscasts)/5);
+        $total_chuncks = count($poscasts) / 6;
+        $data_list = array_chunk($poscasts, $total_chuncks + 1);
 
-        // return ($data_list[0]);
-        
         foreach ($data_list as $key =>  $data) {
-            \Log::error($key . 'proceso ==========' );
+            \Log::error('======= ' . $key . ' proceso ==========' );
             ProcessPodcast::dispatch($data);
         }
     }
